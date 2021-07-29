@@ -3,7 +3,6 @@ import NavTabs from './NavTabs';
 import MyDogs from './pages/MyDogs';
 import Explore from './pages/Explore';
 import FindFurriend from './pages/FindFurriend';
-import Dog4 from './pages/Dog4';
 import Footer from './Footer';
 import "../index.css";
 import "../script.js";
