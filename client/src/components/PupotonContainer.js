@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import NavTabs from './NavTabs';
-import Dog1 from './pages/Dog1';
-import Dog2 from './pages/Dog2';
-import Dog3 from './pages/Dog3';
+import MyDogs from './pages/MyDogs';
+import Explore from './pages/Explore';
+import FindFurriend from './pages/FindFurriend';
 import Dog4 from './pages/Dog4';
 import Footer from './Footer';
 import "../index.css";
@@ -13,16 +13,13 @@ export default function PortfolioContainer() {
 
   // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
   const renderPage = () => {
-    if (currentPage === 'Dog2') {
-      return <Dog2 />;
+    if (currentPage === 'FindFurriend') {
+      return <FindFurriend />;
     }
-    if (currentPage === 'Dog3') {
-      return <Dog3 />;
+    if (currentPage === 'Explore') {
+      return <Explore />;
     }
-    if (currentPage === 'Dog4') {
-      return <Dog4 />;
-    }
-    return <Dog1 />;
+    return <MyDogs />;
   };
 
   const handlePageChange = (page) => setCurrentPage(page);
