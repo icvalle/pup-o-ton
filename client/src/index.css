@@ -10,7 +10,7 @@ img {
 
 select, input {
     padding: 5px;
-    font-size: 200%;
+    /* font-size: 200%; */
 }
 
 button {
@@ -25,9 +25,14 @@ button {
     margin: 15px auto;
 }
 
-.test {
+.dog-parent-container {
     display: flex;
     justify-content: space-between;
+    margin: 30px 0;
+}
+
+.dog-parent-container p {
+    font-size: x-large;
 }
 
 .parents {
@@ -60,15 +65,20 @@ button {
 .exercise-information {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    margin: 30px 0;
 }
 
 .graph-container, .chart-container {
     max-width: 500px;
 }
 
+.add-exercise {
+    margin: 30px 0;
+}
+
 .add-exercise h2 {
     text-align: center;
-    margin: 30px 0;
 }
 
 .exercise-btn-container {
@@ -77,14 +87,15 @@ button {
     margin: 30px 0;
 }
 
+.exercise-btn-container button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 .exercise-options {
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
-
-.exercise-options label {
-    font-size: 175%;
 }
 
 .exercise-options input {
@@ -97,9 +108,14 @@ button {
     margin-right: 10px;
 }
 
+.words h3 {
+    margin: 5px 0;
+}
+
 .words, .options {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 /* .footer {
