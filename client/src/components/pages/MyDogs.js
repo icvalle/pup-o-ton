@@ -6,22 +6,22 @@ import chart from '../../img/pie-chart.png';
 export default function Dog1() {
   return (
     <div className="content-container">
-      <div className="test">
+      <div className="dog-parent-container">
         <div className="dog-image-information">
           <div className="dog-image-container">
             <img src={kirbyPic} alt="" className="dog-image"></img>
           </div>
           <div className="dog-information-container">
-            <h2><b>Name:</b> Kirby</h2>
-            <h2><b>Age:</b> 1y, 2m</h2>
-            <h2><b>Breed:</b> Terrier Chihuahua</h2>
-            <h2><b>Weight:</b> 15 lbs</h2>
+            <p><b>Name:</b> Kirby</p>
+            <p><b>Age:</b> 1y, 2m</p>
+            <p><b>Breed:</b> Terrier Chihuahua</p>
+            <p><b>Weight:</b> 15 lbs</p>
           </div>
         </div>
         <div className="parents">
-          <h2><b>Parents:</b></h2>
-          <h2>Ryan Scherr</h2>
-          <h2>Katie Kaminski</h2>
+          <p><b>Parents:</b></p>
+          <p>Ryan Scherr</p>
+          <p>Katie Kaminski</p>
         </div>
       </div>
       <hr></hr>
@@ -39,8 +39,8 @@ export default function Dog1() {
         <div className="exercise-options">
           <div className="words">
             <h3>Type of Exercise:</h3>
-            <label for="fname">Duration:</label>
-            <label for="fname">Distance:</label>
+            <h3>Duration:</h3>
+            <h3>Distance:</h3>
           </div>
           <div className="options">
             <select>
