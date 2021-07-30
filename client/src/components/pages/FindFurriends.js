@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Dog3() {
+export default function FindFurriends() {
   return (
     <div className="">
       <h2>Find Furriends</h2>

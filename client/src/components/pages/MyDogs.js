@@ -3,7 +3,7 @@ import kirbyPic from '../../img/kirby.jpg';
 import graph from '../../img/graph.png';
 import chart from '../../img/pie-chart.png';
 
-export default function Dog1() {
+export default function MyDogs() {
   return (
     <div className="content-container">
       <div className="dog-parent-container">

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Dog2() {
+export default function Explore() {
   return (
     <div className="content-container">
       <h2 className="title">Explore Your Local Area for All Things Dog!</h2>
