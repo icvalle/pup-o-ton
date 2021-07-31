@@ -34,6 +34,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: Helvetica, sans-serif;
 }
 
+.hidden {
+    display: none;
+}
+
 .title {
     text-align: center;
 }
@@ -69,6 +73,70 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* MyDogs Page */
+
+.add-dog {
+    display: flex;
+    justify-content: center;
+}
+
+.add-dog-btn {
+    margin: 10px;
+}
+
+.new-dog-info {
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.new-dog-info button{
+    width: 100px;
+}
+
+.create-dog-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.create-dog-btn button {
+    margin: 10px;
+}
+
+.questions-answers-container {
+    display: flex;
+    justify-content: center;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.questions h3 {
+    margin: 8px 0;
+}
+
+.answers input {
+    margin: 5px 0;
+}
+
+.questions, .answers {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.list-of-dogs {
+    display: flex;
+    justify-content: center;
+}
+
+.list-of-dogs button {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
 
 .dog-parent-container {
     display: flex;

@@ -4,7 +4,7 @@ import MyDogs from './pages/MyDogs';
 import Explore from './pages/Explore';
 import FindFurriends from './pages/FindFurriends';
 import Footer from './Footer';
-import LoginButton from './LoginButton';
+import HomePage from './HomePage';
 import "../index.css";
 import "../script.js";
 
@@ -32,20 +32,20 @@ export default function PortfolioContainer() {
   const handlePageChange = (page) => setCurrentPage(page);
   
   let pageRender = "";
-  let loginButton = "";
+  let landingPage = "";
   let loggedIn = true;
   if (loggedIn) {
-    loginButton = <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />;
+    landingPage = <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />;
     pageRender = renderPage();
   } else {
-    loginButton = <LoginButton />
+    landingPage = <HomePage />
     pageRender = notRenderPage();
   }
 
   return (
     <div>
       {/* We are passing the currentPage from state and the function to update it */}
-      {loginButton}
+      {landingPage}
       {/* Here we are calling the renderPage method which will return a component  */}
       {pageRender}
       <Footer />
