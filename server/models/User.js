@@ -23,6 +23,12 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
+      dogs: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'Dog',
+        },
+      ],
     },
     // set this to use virtual below
     {

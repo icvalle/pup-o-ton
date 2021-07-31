@@ -15,6 +15,9 @@ const dogSchema = new Schema({
   weight: {
     type: Number,
   },
+  image: {
+    type: String   // stores the path to the image.
+  },
 });
 
 const Dog = model('Dog', dogSchema);
