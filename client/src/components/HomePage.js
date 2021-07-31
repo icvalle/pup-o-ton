@@ -1,7 +1,7 @@
 import React from 'react';
 import '../script.js';
 
-function LoginButton() {
+function HomePage() {
     return (
         <div className="content-container">
             <div className="homepage-description">
@@ -47,4 +47,4 @@ function LoginButton() {
     )
 }
 
-export default LoginButton;
+export default HomePage;
