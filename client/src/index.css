@@ -205,6 +205,55 @@ h1, h2, h3, h4, h5, h6 {
     margin: 10px;
     padding: 10px;
 }
+
+/* Home/Login Page */
+
+.homepage-description p {
+    font-size: x-large;
+}
+
+.login-signup-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-signup-container input {
+    margin: 5px 0;
+}
+
+.login-signup-container h2 {
+    text-align: center;
+}
+
+.login-signup-container h3 {
+    margin: 8px 0;
+}
+
+.login-container, .signup-container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 10px;
+}
+
+.descriptors-inputs-container {
+    display: flex;
+}
+
+.descriptors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.descritpors, .inputs {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
 /* .footer {
     position: fixed;
     bottom: 0;
