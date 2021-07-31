@@ -33,7 +33,7 @@ export default function PortfolioContainer() {
   
   let pageRender = "";
   let loginButton = "";
-  let loggedIn = false;
+  let loggedIn = true;
   if (loggedIn) {
     loginButton = <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />;
     pageRender = renderPage();
