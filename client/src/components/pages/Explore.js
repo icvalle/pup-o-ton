@@ -10,17 +10,25 @@ export default function Explore() {
             <h3>Find Dog Parks Nearby:</h3>
             <input type="text" id="fname" name="fname" size="50"></input>
           </div>
-          <button>Search</button>
+          <div className="search-btn">
+            <button>Search</button>
+          </div>
+          <hr></hr>
           <div className="search">
             <h3>Find Pet Stores Nearby:</h3>
             <input type="text" id="fname" name="fname" size="50"></input>
           </div>
-          <button>Search</button>
+          <div className="search-btn">
+            <button>Search</button>
+          </div>
+          <hr></hr>
           <div className="search">
             <h3>Find Vets Nearby:</h3>
             <input type="text" id="fname" name="fname" size="50"></input>
           </div>
-          <button>Search</button>
+          <div className="search-btn">
+            <button>Search</button>
+          </div>
         </div>
         <div className="results-container">
           <h2>Results</h2>

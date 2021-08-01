@@ -6,7 +6,6 @@ import '../script.js';
 function NavTabs({ currentPage, handlePageChange }) {
   return (
     <div className="header">
-        <h1>Pup-o-Ton Dog Fitness Tracker</h1>
         <ul className="nav nav-tabs">
           <li className="nav-item">
             <a
