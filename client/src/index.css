@@ -1,7 +1,24 @@
+:root {
+    --dark-green: #2C5E2E;
+    --light-green: #70B85D;
+    --off-white: #FFFEF1;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    background-color: var(--off-white);
+}
+
+header {
+    background-color: var(--dark-green);
+    color: var(--light-green);
+    padding: 10px;
+    text-align: center;
 }
 
 img {
@@ -23,6 +40,10 @@ button {
 button:hover {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+p {
+    color: #2C5E2E;
 }
 
 h1 {
@@ -241,6 +262,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 5px;
 }
 
+.search-results-container input {
+    width: 50%;
+}
+
 .search-container, .results-container {
     border: 2px solid black;
     width: 50%;
@@ -251,12 +276,12 @@ h1, h2, h3, h4, h5, h6 {
 .search-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
 .search {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 }
 
 .results {
@@ -265,7 +290,18 @@ h1, h2, h3, h4, h5, h6 {
     margin: 20px;
 }
 
+.search-container hr {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.search-btn {
+    display: flex;
+    justify-content: center;
+}
+
 /* Find Furriends Page */
+
 .friend-container {
     justify-content: center;
     border: 2px solid black;
@@ -283,10 +319,13 @@ h1, h2, h3, h4, h5, h6 {
 .login-signup-container {
     display: flex;
     justify-content: center;
+    color: var(--dark-green);
 }
 
 .login-signup-container input {
     margin: 5px 0;
+    border: 2px solid var(--dark-green);
+    color: var(--dark-green);
 }
 
 .login-signup-container h2 {
@@ -295,6 +334,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .login-signup-container h3 {
     margin: 8px 0;
+}
+
+.login-signup-container button {
+    background-color: var(--dark-green);
+    color: var(--off-white);
+    border: 2px solid var(--light-green);
+    font-size: large;
+    font-weight: bold;
 }
 
 .login-container, .signup-container {
@@ -326,3 +373,16 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     bottom: 0;
 } */
+
+@media only screen and (max-width: 768px) {
+
+    .search-results-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-container, .results-container {
+        width: 100%;
+    }
+
+}

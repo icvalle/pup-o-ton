@@ -5,7 +5,6 @@ function HomePage() {
     return (
         <div className="content-container">
             <div className="homepage-description">
-                <h1>Pup-o-Ton Dog Fitness Tracker</h1>
                 <p>Welcome! At Pup-o-Ton Dog Fitness Tracker, you can keep track of your dogs' exercise, find dog parks, stores, and vets nearby, and meet fellow dog-lovers in your area.</p>
                 <p className="title">Sign up or login below to get started!</p>
             </div>
