@@ -18,11 +18,15 @@ const typeDefs = gql`
     }
 
     type Query {
-        user: User
+        user: User,
+        dogs: [Dog],
+        exercises: [Exercise]
     }
 
     type Mutation {
-        createUser(name: String!, username: String!, email: String!, password: String!): User
+        createUser(name: String!, username: String!, email: String!, password: String!): User,
+        createDog(name: String!, age: Int, breed: String, weight: Int): Dog,
+        createExercise(day: Date!, type: String!, name: String!, duration: Int!, sets: Int!)
     }
 `;
 

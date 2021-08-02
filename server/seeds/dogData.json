@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Spartacus",
+        "age": "5",
+        "breed": "Brownish Dog",
+        "weight": "35"
+    },
+    {
+        "name": "Dixie",
+        "age": "4",
+        "breed": "Australian Cattle Dog mix",
+        "weight": "45"
+    },
+    {
+        "name": "Checkers",
+        "age": "5",
+        "breed": "N/A",
+        "weight": "23"
+    },
+    {
+        "name": "Cooper",
+        "age": "1",
+        "breed": "Terrier thing",
+        "weight": "3"
+    }
+]
