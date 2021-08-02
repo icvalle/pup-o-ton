@@ -18,6 +18,18 @@ const dogSchema = new Schema({
   image: {
     type: String   // stores the path to the image.
   },
+  exercise: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Exercise',
+    },
+  ],
+  owner: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
 });
 
 const Dog = model('Dog', dogSchema);
