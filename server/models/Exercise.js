@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const exerciseSchema = new Schema({
     day: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        required: true
     },
     type: {
         type: String,
