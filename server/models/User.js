@@ -3,11 +3,6 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
     {
-    name: {
-        type: String,
-        trim: true,
-        required: "Enter your name to create a profile"
-        },
       username: {
         type: String,
         required: true,
