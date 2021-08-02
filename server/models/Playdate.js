@@ -21,7 +21,7 @@ const playdateSchema = new Schema({
     playmate: [
         {
           type: Schema.Types.ObjectId,
-          ref: 'Dog',
+          ref: 'User',
         },
     ],
 });
