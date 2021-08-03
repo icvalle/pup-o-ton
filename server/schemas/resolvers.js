@@ -21,9 +21,9 @@ const resolvers = {
         dogs: async () => {
             return Dog.find();
         },
-        dog: async (parent, { dogId }) => {
-            return Dog.findOne({ _id: dogId });
-        },
+        // dog: async (parent, { dogId }) => {
+        //     return Dog.findOne({ _id: dogId });
+        // },
         dogExercise: async (parent, { dogId }) => {
             return Dog.find({ dogId }).populate('exercises');
         },
@@ -76,10 +76,10 @@ const resolvers = {
             );
             return dog;
         },
-        addExercise: async (parent, args) => {
-            const exercise = await Exercise.create(args);
-            return exercise;
-        },
+        // addExercise: async (parent, args) => {
+        //     const exercise = await Exercise.create(args);
+        //     return exercise;
+        // },
     },
 };
 
