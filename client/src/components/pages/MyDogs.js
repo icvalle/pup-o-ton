@@ -1,10 +1,82 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import Auth from '../../utils/auth';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { ADD_DOG } from '../../utils/mutations';
 import kirbyPic from '../../img/kirby.jpg';
 import graph from '../../img/graph.png';
 import chart from '../../img/pie-chart.png';
 import $ from 'jquery';
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 export default function MyDogs() {
+
+  const [dogState, setDogState] = useState({
+    name: '',
+    age: '',
+    breed: '',
+    weight: '',
+    image: '',
+  });
+  const [addDog, { error, data }] = useMutation(ADD_DOG);
+
+  const handleDogChange = (event) => {
+    event.preventDefault();
+    const { name, value } = event.target;
+
+    setDogState({
+      ...dogState,
+      [name]: value,
+    });
+  };
+
+
+const handleAddDog = async (event) => {
+  console.log("First test!");
+  event.preventDefault();
+  console.log(dogState);
+
+  try {
+    const { data } = await addDog({
+      variables: { ...dogState },
+    });
+    console.log(data);
+    Auth.login(data.addDog.token);
+  } catch (e) {
+    console.error(e);
+  }
+
+  $(".new-dog-info").addClass("hidden");
+  $(".add-dog-btn").removeClass("hidden");
+};
 
   function showDogInfo() {
     $("#dogName").value = "";
@@ -16,13 +88,6 @@ export default function MyDogs() {
     $(".add-dog-btn").addClass("hidden");
   }
 
-  function createDog() {
-    $(".new-dog-info").addClass("hidden");
-    $(".add-dog-btn").removeClass("hidden");
-
-    // add code for adding dog to database
-  }
-
   function cancel() {
     $(".new-dog-info").addClass("hidden");
     $(".add-dog-btn").removeClass("hidden");
@@ -32,8 +97,6 @@ export default function MyDogs() {
   const listOfDogs = myDogs.map(name => {
     return <button >{name}</button>;
   })
-
-  console.log(myDogs.length);
 
   return (
     <div className="content-container">
@@ -49,14 +112,14 @@ export default function MyDogs() {
             <h3>Weight:</h3>
           </div>
           <div className="answers">
-            <input type="text" id="fname" name="fname" id="dogName"></input>
-            <input type="text" id="fname" name="fname" id="dogAge"></input>
-            <input type="text" id="fname" name="fname" id="dogBreed"></input>
-            <input type="text" id="fname" name="fname" id="dogWeight"></input>
+            <input type="text" name="name" id="dogName" defaultValue={dogState.name} onChange={handleDogChange}></input>
+            <input type="text" name="age" id="dogAge" defaultValue={dogState.age} onChange={handleDogChange}></input>
+            <input type="text" name="breed" id="dogBreed" defaultValue={dogState.breed} onChange={handleDogChange}></input>
+            <input type="text" name="weight" id="dogWeight" defaultValue={dogState.weight} onChange={handleDogChange}></input>
           </div>
         </div>
         <div className="create-dog-btn">
-          <button onClick={createDog}>Add Dog</button>
+          <button onClick={handleAddDog}>Add Dog</button>
           <button onClick={cancel}>Cancel</button>
         </div>
       </div>
@@ -105,8 +168,8 @@ export default function MyDogs() {
               <option value="actual value 2">Exercise Type 1</option>
               <option value="actual value 3">Exercise Type 2</option>
             </select>
-            <input type="text" id="fname" name="fname"></input>
-            <input type="text" id="fname" name="fname"></input>
+            <input type="text" name="fname"></input>
+            <input type="text" name="fname"></input>
           </div>
         </div>
         <div className="exercise-btn-container">

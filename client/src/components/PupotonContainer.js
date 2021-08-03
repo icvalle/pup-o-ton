@@ -34,7 +34,7 @@ export default function PortfolioContainer() {
   
   let pageRender = "";
   let landingPage = "";
-  let loggedIn = false;
+  let loggedIn = true;
   if (loggedIn) {
     landingPage = <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />;
     pageRender = renderPage();

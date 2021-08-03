@@ -34,7 +34,7 @@ const resolvers = {
 
             return { token, user };
         },
-        createDog: async (parent, args) => {
+        addDog: async (parent, args) => {
             const userId = args.userId;
             const dog = await Dog.create(args);
             const user = await User.findOneAndUpdate(userId,
