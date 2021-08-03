@@ -12,30 +12,30 @@ const userSchema = new Schema(
         type: String,
         required: true,
         unique: true,
-        match: [/.+@.+\..+/, 'Must use a valid email address'],
+        // match: [/.+@.+\..+/, 'Must use a valid email address'],
       },
       password: {
         type: String,
         required: true,
       },
-      dogs: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'Dog',
-        },
-      ],
-      friends: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'Friend',
-        },
-      ],
-      playdate: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'Playdate',
-        },
-      ],
+      // dogs: [
+      //   {
+      //     type: Schema.Types.ObjectId,
+      //     ref: 'Dog',
+      //   },
+      // ],
+      // friends: [
+      //   {
+      //     type: Schema.Types.ObjectId,
+      //     ref: 'Friend',
+      //   },
+      // ],
+      // playdate: [
+      //   {
+      //     type: Schema.Types.ObjectId,
+      //     ref: 'Playdate',
+      //   },
+      // ],
     },
     // set this to use virtual below
     {

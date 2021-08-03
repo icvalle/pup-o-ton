@@ -4,8 +4,8 @@ const typeDefs = gql`
     type User {
         _id: ID!
         username: String!
-        email: String!
-        password: String!
+        email: String
+        password: String
     }
 
     type Dog {
@@ -16,16 +16,21 @@ const typeDefs = gql`
         weight: Int
     }
 
+    type Auth {
+        token: ID!
+        user: User
+    }
+
     type Query {
         user: User,
         dogs: [Dog],
-        exercises: [Exercise]
     }
 
     type Mutation {
-        createUser(username: String!, email: String!, password: String!): User,
+        addUser(username: String!, email: String!, password: String!): Auth,
+        login(email: String!, password: String!): Auth,
         createDog(name: String!, age: Int, breed: String, weight: Int): Dog,
-        createExercise(day: Date!, type: String!, name: String!, duration: Int!, sets: Int!)
+        
     }
 `;
 

@@ -1,3 +1,6 @@
+const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require('apollo-server-express');
+
 const { Dog, Exercise, User } = require('../models');
 
 const resolvers = {
@@ -8,9 +11,28 @@ const resolvers = {
         }
     },
     Mutation: {
-        createUser: async (parent, args) => {
+        addUser: async (parent, args) => {
+            console.log('Creating user');
             const user = await User.create(args);
-            return user;
+            const token = signToken(user);
+            return { token, user };
+        },
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+
+            if (!user) {
+                throw new AuthenticationError('No user found with this email address');
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect credentials');
+            }
+
+            const token = signToken(user);
+
+            return { token, user };
         },
         createDog: async (parent, args) => {
             const userId = args.userId;
@@ -21,10 +43,10 @@ const resolvers = {
             );
             return dog;
         },
-        createExercise: async (parent, args) => {
-            const exercise = await Exercise.create(args);
-            return exercise;
-        },
+        // createExercise: async (parent, args) => {
+        //     const exercise = await Exercise.create(args);
+        //     return exercise;
+        // },
     }
 }
 
