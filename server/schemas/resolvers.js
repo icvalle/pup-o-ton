@@ -67,13 +67,8 @@ const resolvers = {
 
             return { token, user };
         },
-        addDog: async (parent, args) => {
-            const userId = args.userId;
-            const dog = await Dog.create(args);
-            const user = await User.findOneAndUpdate(userId,
-                { $push: { dogs: dog } },
-                { new: true }
-            );
+        addDog: async (parent, {name, age, breed, weight}) => {
+            const dog = await Dog.create({name, breed, age, breed, weight});
             return dog;
         },
         // addExercise: async (parent, args) => {

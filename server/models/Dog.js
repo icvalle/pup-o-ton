@@ -7,13 +7,13 @@ const dogSchema = new Schema({
     required: "Enter a name for your dog"
   },
   age: {
-    type: Number,
+    type: String,
   },
   breed: {
     type: String,
   },
   weight: {
-    type: Number,
+    type: String,
   },
   image: {
     type: String   // stores the path to the image.
