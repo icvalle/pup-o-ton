@@ -9,5 +9,3 @@ const DogExercise = require('./DogExercise');
 
 
 module.exports = { User, Dog, Exercise, Playdate, UserDog, UserFriend, UserPlaydate, DogExercise };
-,
-        required: true
