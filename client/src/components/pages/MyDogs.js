@@ -138,11 +138,11 @@ const handleAddDog = async (event) => {
             <p><b>Weight:</b> 15 lbs</p>
           </div>
         </div>
-        <div className="parents">
+        {/* <div className="parents">
           <p><b>Parents:</b></p>
           <p>Ryan Scherr</p>
           <p>Katie Kaminski</p>
-        </div>
+        </div> */}
       </div>
       <hr></hr>
       <div className="exercise-information">
@@ -165,8 +165,8 @@ const handleAddDog = async (event) => {
           <div className="options">
             <select>
               <option value="actual value 1">Select</option>
-              <option value="actual value 2">Exercise Type 1</option>
-              <option value="actual value 3">Exercise Type 2</option>
+              <option value="actual value 2">Walk</option>
+              <option value="actual value 3">Play</option>
             </select>
             <input type="text" name="fname"></input>
             <input type="text" name="fname"></input>
