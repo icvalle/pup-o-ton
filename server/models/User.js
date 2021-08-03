@@ -17,25 +17,7 @@ const userSchema = new Schema(
       password: {
         type: String,
         required: true,
-      },
-      // dogs: [
-      //   {
-      //     type: Schema.Types.ObjectId,
-      //     ref: 'Dog',
-      //   },
-      // ],
-      // friends: [
-      //   {
-      //     type: Schema.Types.ObjectId,
-      //     ref: 'Friend',
-      //   },
-      // ],
-      // playdate: [
-      //   {
-      //     type: Schema.Types.ObjectId,
-      //     ref: 'Playdate',
-      //   },
-      // ],
+      }
     },
     // set this to use virtual below
     {
