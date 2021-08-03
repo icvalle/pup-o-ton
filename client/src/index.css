@@ -190,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .dog-parent-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin: 30px 0;
 }
 
@@ -242,6 +242,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .add-exercise h2 {
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .exercise-btn-container {
@@ -283,7 +284,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .search-results-container h3, .search-results-container button, .search-results-container input {
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .search-results-container h3 {
@@ -291,7 +292,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .search-results-container input {
-    width: 50%;
+    max-width: 200px;
 }
 
 .search-container, .results-container {
@@ -304,12 +305,13 @@ h1, h2, h3, h4, h5, h6 {
 .search-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .search {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-evenly;
 }
 
 .results {
