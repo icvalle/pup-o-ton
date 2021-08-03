@@ -1,11 +1,11 @@
 const { Schema, model } = require('mongoose');
 
 const exerciseSchema = new Schema({
-    day: {
-        type: Date,
-        default: Date.now,
-        required: true
-    },
+    // day: {
+    //     type: Date,
+    //     default: Date.now,
+    //     required: true
+    // },
     type: {
         type: String,
         trim: true,

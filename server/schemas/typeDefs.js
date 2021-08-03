@@ -11,10 +11,10 @@ const typeDefs = gql`
     type Dog {
         _id: ID
         name: String!
-        age: Int
+        age: String
         breed: String
-        weight: Int
-        image: : String
+        weight: String
+        image: String
     }
 
     type UserDog {
@@ -31,7 +31,6 @@ const typeDefs = gql`
 
     type Exercise {
         _id: ID
-        day: Date
         type: String
         name: String
         duration: Int
@@ -60,8 +59,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addDog(name: String!, breed: String age: String, breed: String, weight: String): Dog
         addUserDog(name: String!, age: Int, breed: String, weight: Int, image: String): Dog
-        addDogExercise(day: Date, type: String!, name: String!, duration: Int!, sets: Int!): Exercise
-        addExercise(day: Date, type: String!, name: String!, duration: Int!, sets: Int!): Exercise
+        
     }
 `;
 
