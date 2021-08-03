@@ -4,50 +4,48 @@ export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
       _id
-      name
       username
       email
+    }
+  }
+`;
+
+export const QUERY_USERDOG = gql`
+  query userDog($userId: ID!) {
+    userDog(userId: $userId) {
+      _id
+      userId
       dogs {
         _id
         name
-      }
-      friends {
-        _id
-        name
-        username
-      }
-      playdate {
-        _id
-        day
-        time
-        location
-        dog {
-          _id
-          name
-        }
-        playmate {
-          _id
-          username
-          dogs {
-            _id
-            name
-          }
-        }
+        age
+        breed
+        weight
+        image
       }
     }
   }
 `;
 
-export const QUERY_DOGS = gql`
-  query getDogs {
-    dogs {
+export const QUERY_DOG = gql`
+  query getDog {
+    dog {
       _id
       name
       age
       breed
       weight
       image
-      exercise {
+    }
+  }
+`;
+
+export const QUERY_DOGEXERCISE = gql`
+  query dogExercise($dogId: ID!) {
+    dogExercise(dogId: $dogId) {
+      _id
+      dogId
+      exercises {
         _id
         day
         type
@@ -55,72 +53,32 @@ export const QUERY_DOGS = gql`
         duration
         sets
       }
-      owner {
-        _id
-        name
-      }
     }
   }
 `;
 
-export const QUERY_SINGLE_DOG = gql`
-  query getSingleDog($dogId: ID!) {
-  dog(dogId: $dogId) {
+export const QUERY_EXERCISE = gql`
+  query getExercise {
+    exercise {
       _id
+      day
+      type
       name
-      age
-      breed
-      weight
-      image
-      exercise {
-        _id
-        day
-        type
-        name
-        duration
-        sets
-      }
-      owner {
-        _id
-        name
-      }
+      duration
+      sets
     }
   }
 `;
 
-export const QUERY_FRIENDS = gql`
-  query getFriends {
-    friends {
-      _id
-      name
-      username
-      dogs {
-        _id
-        name
-      }
-    }
-  }
-`;
-
-export const QUERY_PLAYDATES = gql`
-  query getPlaydates {
+export const QUERY_PLAYDATE = gql`
+  query getPlaydate {
     playdate {
       _id
       day
       time
       location
-      dog {
-        _id
-        name
-      }
-      playmate {
-        _id
-        username
-        dogs {
-          _id
-          name
-        }
-      }
+      dog
+      playmate
     }
   }
 `;
@@ -129,36 +87,8 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
-      name
       username
       email
-      dogs {
-        _id
-        name
-      }
-      friends {
-        _id
-        name
-        username
-      }
-      playdate {
-        _id
-        day
-        time
-        location
-        dog {
-          _id
-          name
-        }
-        playmate {
-          _id
-          username
-          dogs {
-            _id
-            name
-          }
-        }
-      }
     }
   }
 `;
