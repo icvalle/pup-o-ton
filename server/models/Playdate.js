@@ -12,18 +12,14 @@ const playdateSchema = new Schema({
         type: String,
         required: true
     },
-    dog: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'Dog',
-        },
-    ],
-    playmate: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'User',
-        },
-    ],
+    dog: {
+        type: String,
+        required: true
+    },
+    playmate: {
+        type: String,
+        required: true
+    },
 });
 
 const Playdate = model('Playdate', playdateSchema);
