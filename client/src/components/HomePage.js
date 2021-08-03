@@ -1,7 +1,121 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../script.js';
+import { useMutation } from '@apollo/client';
+import { ADD_USER, LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-function HomePage() {
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+
+const HomePage = () => {
+
+  // SIGNUP
+
+        const [signupState, setSignupState] = useState({
+          username: '',
+          email: '',
+          password: '',
+        });
+        const [addUser, { error, data }] = useMutation(ADD_USER);
+      
+        const handleSignupChange = (event) => {
+          event.preventDefault();
+          const { name, value } = event.target;
+      
+          setSignupState({
+            ...signupState,
+            [name]: value,
+          });
+        };
+
+
+    const handleSignup = async (event) => {
+        event.preventDefault();
+        console.log(signupState);
+    
+        try {
+          const { data } = await addUser({
+            variables: { ...signupState },
+          });
+          console.log(data);
+          Auth.login(data.addUser.token);
+        } catch (e) {
+          console.error(e);
+        }
+      };
+
+      // LOGIN
+
+      const [loginState, setLoginState] = useState({ 
+        email: '', 
+        password: '' });
+      const [login, { anError, someData }] = useMutation(LOGIN_USER);
+    
+      // update state based on form input changes
+      const handleLoginChange = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+    
+        setLoginState({
+          ...loginState,
+          [name]: value,
+        });
+      };
+    
+      // submit form
+      const handleLogin = async (event) => {
+        event.preventDefault();
+        console.log(loginState);
+
+        try {
+          const { someData } = await login({
+            variables: { ...loginState },
+          });
+          console.log(someData);
+          Auth.login(someData.login.token);
+          console.log("Logged in!");
+        } catch (e) {
+          console.error(e);
+        }
+    
+        // clear form values
+        setLoginState({
+          email: '',
+          password: '',
+        });
+      };
+    
+    
+
     return (
         <div className="content-container">
             <div className="homepage-description">
@@ -13,17 +127,15 @@ function HomePage() {
                     <h2>Login</h2>
                     <div className="descriptors-inputs-container">
                         <div className="descriptors">
-                            <h3>Username:</h3>
                             <h3>Email:</h3>
                             <h3>Password:</h3>
                         </div>
                         <div className="inputs">
-                            <input type="text" id="fname" name="fname"></input>
-                            <input type="email" id="fname" name="fname"></input>
-                            <input type="password" id="fname" name="fname"></input>
+                            <input type="email" name="email" defaultValue={loginState.email} onChange={handleLoginChange}></input>
+                            <input type="password" name="password" defaultValue={loginState.password} onChange={handleLoginChange}></input>
                         </div>
                     </div>
-                    <button>Login</button>
+                    <button onClick={handleLogin}>Login</button>
                 </div>
                 <div className="signup-container">
                     <h2>Signup</h2>
@@ -33,13 +145,13 @@ function HomePage() {
                             <h3>Email:</h3>
                             <h3>Password:</h3>
                         </div>
-                            <div className="inputs">
-                            <input type="text" id="fname" name="fname"></input>
-                            <input type="email" id="fname" name="fname"></input>
-                            <input type="password" id="fname" name="fname"></input>
+                        <div className="inputs">
+                            <input type="text" name="username" defaultValue={signupState.username} onChange={handleSignupChange}></input>
+                            <input type="email" name="email" defaultValue={signupState.email} onChange={handleSignupChange}></input>
+                            <input type="password" name="password" defaultValue={signupState.password} onChange={handleSignupChange}></input>
                         </div>
                     </div>
-                    <button>Signup</button>
+                    <button onClick={handleSignup}>Signup</button>
                 </div>
             </div>
         </div>
