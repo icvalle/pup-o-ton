@@ -104,12 +104,8 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     margin: 0 5px;
     background-color: var(--off-white);
-    border-bottom: 2px solid var(--dark-green);
     border-radius: 10px 10px 0 0;
     color: var(--dark-green);
-    border-top: 2px solid var(--dark-green);
-    border-left: 2px solid var(--dark-green);
-    border-right: 2px solid var(--dark-green);
 }
 
 .nav-link:hover {
@@ -421,6 +417,28 @@ h1, h2, h3, h4, h5, h6 {
     .login-signup-container {
         flex-direction: column;
         align-items: center;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    .nav-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin-bottom: 40px;
+    }
+
+    .nav-link {
+        border-radius: 10px;
+    }
+
+    .active {
+        color: var(--light-green);
+        padding-bottom: 10px;
     }
 
 }
