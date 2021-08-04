@@ -97,12 +97,12 @@ const HomePage = () => {
         // console.log(loginState);
 
         try {
-          const { testData } = await login({
+          const { data } = await login({
             variables: { ...loginState },
           });
-          // console.log(testData);
-          Auth.login(testData.login.token);
-          // console.log("Logged in!");
+
+          Auth.login(data.login.token);
+
         } catch (e) {
           console.error(e);
         }
