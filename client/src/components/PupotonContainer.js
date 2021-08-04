@@ -8,8 +8,11 @@ import Header from './Header';
 import HomePage from './HomePage';
 import "../index.css";
 import "../script.js";
+import Auth from '../utils/auth';
 
 export default function PortfolioContainer() {
+
+  console.log(Auth.loggedIn());
   
   const [currentPage, setCurrentPage] = useState('MyDogs');
 
@@ -34,8 +37,8 @@ export default function PortfolioContainer() {
   
   let pageRender = "";
   let landingPage = "";
-  let loggedIn = true;
-  if (loggedIn) {
+  // let loggedIn = true;
+  if (Auth.loggedIn()) {
     landingPage = <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />;
     pageRender = renderPage();
   } else {
