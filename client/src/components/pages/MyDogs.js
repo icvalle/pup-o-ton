@@ -69,7 +69,6 @@ const handleAddDog = async (event) => {
       variables: { ...dogState },
     });
     console.log(data);
-    Auth.login(data.addDog.token);
   } catch (e) {
     console.error(e);
   }
