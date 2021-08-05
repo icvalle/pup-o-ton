@@ -15,6 +15,8 @@ import chart from '../../img/pie-chart.png';
 import $ from 'jquery';
 import ListOfDogs from '../ListOfDogs';
 import QueryUser from '../QueryUser';
+import AddExercise from '../AddExercise';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -144,28 +146,7 @@ const handleAddDog = async (event) => {
         </div>
       </div>
       <hr></hr>
-      <div className="add-exercise">
-        <h2>Add Exercise</h2>
-        <div className="exercise-options">
-          <div className="words">
-            <h3>Type of Exercise:</h3>
-            <h3>Duration:</h3>
-            <h3>Distance:</h3>
-          </div>
-          <div className="options">
-            <select>
-              <option value="actual value 1">Select</option>
-              <option value="actual value 2">Walk</option>
-              <option value="actual value 3">Play</option>
-            </select>
-            <input type="text" name="fname"></input>
-            <input type="text" name="fname"></input>
-          </div>
-        </div>
-        <div className="exercise-btn-container">
-          <button>Add Exercise</button>
-        </div>
-      </div>
+      <AddExercise></AddExercise>
     </div>
   );
 }
