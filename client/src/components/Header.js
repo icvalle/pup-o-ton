@@ -3,6 +3,14 @@ import Auth from '../utils/auth';
 
 function Header() {
 
+    let logoutBtn;
+
+    if (Auth.loggedIn()) {
+        logoutBtn = <button class="logout" onClick={logMeOut}>Logout</button>
+    } else {
+        logoutBtn = <div></div>
+    }
+
     function logMeOut() {
         Auth.logout();
     }
@@ -10,7 +18,7 @@ function Header() {
     return (
         <header className="header">
             <h1>Pup-o-Ton Dog Fitness Tracker</h1>
-            <button onClick={logMeOut}>Logout</button>
+            {logoutBtn}
         </header>
     )
 }
