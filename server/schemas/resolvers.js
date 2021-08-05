@@ -1,17 +1,13 @@
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
-const { Dog, Exercise, User } = require('../models');
+const { Dog, Exercise, User, UserDog } = require('../models');
 
 const resolvers = {
     Query: {
         users: async () => {
             return User.find();
         },
-        // user: async (parent, { _id }) => {
-        //     const params = _id ? { _id } : {};
-        //     return User.find(params);
-        // },
         user: async (parent, { username }) => {
             return User.findOne({ username });
         },
@@ -21,11 +17,8 @@ const resolvers = {
         dogs: async () => {
             return Dog.find();
         },
-        // dog: async (parent, { dogId }) => {
-        //     return Dog.findOne({ _id: dogId });
-        // },
-        dogExercise: async (parent, { dogId }) => {
-            return Dog.find({ dogId }).populate('exercises');
+        dogExercise: async (parent, { id }) => {
+            return Dog.find({ dogId: id}).populate('exercises');
         },
         exercises: async () => {
             return Exercise.find();
@@ -44,12 +37,6 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
           },
-        // addUser: async (parent, args) => {
-        //     console.log('Creating user');
-        //     const user = await User.create(args);
-        //     const token = signToken(user);
-        //     return { token, user };
-        // },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
@@ -67,13 +54,20 @@ const resolvers = {
 
             return { token, user };
         },
-        addDog: async (parent, {name, age, breed, weight}) => {
+        addDog: async (parent, {name, age, breed, weight}, context) => {
             const dog = await Dog.create({name, breed, age, breed, weight});
-            return dog;
+            const possibleUserDog = UserDog.findOne({userId: context.user_id});
+            if(possibleUserDog){
+                possibleUserDog.update({$push: {dogs: dog}})
+                return { dog, possibleUserDog}
+            }
+            const userDog = UserDog.create({userId: context.user._id, dogs: [dog]});
+            return {dog, userDog};
+            
         },
-        // addExercise: async (parent, args) => {
-        //     const exercise = await Exercise.create(args);
-        //     return exercise;
+        // addExercise: async (parent, {day, type,  duration}) => {
+        //     const exercise = await Exercise.create({day, type, duration});
+        //      return exercise;
         // },
     },
 };
