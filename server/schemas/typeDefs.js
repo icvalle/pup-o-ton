@@ -1,6 +1,9 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+
+    scalar ISODate
+
     type User {
         _id: ID
         username: String
@@ -31,15 +34,19 @@ const typeDefs = gql`
 
     type Exercise {
         _id: ID
-        type: String
-        name: String
-        duration: Int
-        sets: Int
+        day: ISODate
+        type: String!
+        duration: Int!
     }
 
     type Auth {
         token: ID!
         user: User
+    }
+
+    type ReturnedDog {
+        dog: Dog
+        userDog: UserDog
     }
 
     type Query {
@@ -57,9 +64,7 @@ const typeDefs = gql`
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addDog(name: String!, breed: String age: String, breed: String, weight: String): Dog
-        addUserDog(name: String!, age: Int, breed: String, weight: Int, image: String): Dog
-        
+        addDog(name: String!, age: String, breed: String, weight: String): ReturnedDog
     }
 `;
 
