@@ -82,7 +82,7 @@ const HomePage = () => {
     
       // update state based on form input changes
       const handleLoginChange = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         const { name, value } = event.target;
     
         setLoginState({
@@ -94,15 +94,15 @@ const HomePage = () => {
       // submit form
       const handleLogin = async (event) => {
         event.preventDefault();
-        console.log(loginState);
+        // console.log(loginState);
 
         try {
-          const { someData } = await login({
+          const { data } = await login({
             variables: { ...loginState },
           });
-          console.log(someData);
-          Auth.login(someData.login.token);
-          console.log("Logged in!");
+
+          Auth.login(data.login.token);
+
         } catch (e) {
           console.error(e);
         }
