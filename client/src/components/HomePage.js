@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import '../script.js';
 import { useMutation } from '@apollo/client';
 import { ADD_USER, LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import {
   ApolloClient,
   InMemoryCache,
-  ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -45,7 +42,7 @@ const HomePage = () => {
           email: '',
           password: '',
         });
-        const [addUser, { error, data }] = useMutation(ADD_USER);
+        const [addUser] = useMutation(ADD_USER);
       
         const handleSignupChange = (event) => {
           event.preventDefault();
@@ -78,7 +75,7 @@ const HomePage = () => {
       const [loginState, setLoginState] = useState({ 
         email: '', 
         password: '' });
-      const [login, { anError, someData }] = useMutation(LOGIN_USER);
+      const [login] = useMutation(LOGIN_USER);
     
       // update state based on form input changes
       const handleLoginChange = (event) => {
@@ -114,8 +111,6 @@ const HomePage = () => {
         });
       };
     
-    
-
     return (
         <div className="content-container">
             <div className="homepage-description">

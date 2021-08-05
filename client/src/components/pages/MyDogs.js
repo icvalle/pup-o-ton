@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import Auth from '../../utils/auth';
 import {
   ApolloClient,
   InMemoryCache,
-  ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -47,7 +45,7 @@ export default function MyDogs() {
     weight: '',
     image: '',
   });
-  const [addDog, { error, data }] = useMutation(ADD_DOG);
+  const [addDog] = useMutation(ADD_DOG);
 
   const handleDogChange = (event) => {
     event.preventDefault();
