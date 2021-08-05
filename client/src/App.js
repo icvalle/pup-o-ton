@@ -5,9 +5,7 @@ import {
     ApolloProvider,
     createHttpLink,
   } from '@apollo/client';
-  import { setContext } from '@apollo/client/link/context';
-  import { BrowserRouter as Router, Route } from 'react-router-dom';
-  
+import { setContext } from '@apollo/client/link/context';
 import PupotonContainer from "./components/PupotonContainer";
 
 const httpLink = createHttpLink({
