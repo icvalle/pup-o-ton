@@ -14,6 +14,7 @@ import graph from '../../img/graph.png';
 import chart from '../../img/pie-chart.png';
 import $ from 'jquery';
 import ListOfDogs from '../ListOfDogs';
+import QueryUser from '../QueryUser';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -119,6 +120,7 @@ const handleAddDog = async (event) => {
         </div>
       </div>
       <ListOfDogs></ListOfDogs>
+      <QueryUser></QueryUser>
       <div className="dog-parent-container">
         <div className="dog-image-information">
           <div className="dog-image-container">
