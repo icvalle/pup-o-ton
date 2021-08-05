@@ -13,6 +13,7 @@ import kirbyPic from '../../img/kirby.jpg';
 import graph from '../../img/graph.png';
 import chart from '../../img/pie-chart.png';
 import $ from 'jquery';
+import ListOfDogs from '../ListOfDogs';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -92,11 +93,6 @@ const handleAddDog = async (event) => {
     $(".add-dog-btn").removeClass("hidden");
   }
 
-  let myDogs = ["Kirby", "Mr. Fluffy", "George"];
-  const listOfDogs = myDogs.map(name => {
-    return <button >{name}</button>;
-  })
-
   return (
     <div className="content-container">
       <div className="add-dog">
@@ -122,9 +118,7 @@ const handleAddDog = async (event) => {
           <button onClick={cancel}>Cancel</button>
         </div>
       </div>
-      <div className="list-of-dogs">
-        {listOfDogs}
-      </div>
+      <ListOfDogs></ListOfDogs>
       <div className="dog-parent-container">
         <div className="dog-image-information">
           <div className="dog-image-container">
@@ -137,11 +131,6 @@ const handleAddDog = async (event) => {
             <p><b>Weight:</b> 15 lbs</p>
           </div>
         </div>
-        {/* <div className="parents">
-          <p><b>Parents:</b></p>
-          <p>Ryan Scherr</p>
-          <p>Katie Kaminski</p>
-        </div> */}
       </div>
       <hr></hr>
       <div className="exercise-information">
