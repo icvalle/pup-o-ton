@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import Auth from '../../utils/auth';
 import {
   ApolloClient,
   InMemoryCache,
-  ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -13,6 +11,10 @@ import kirbyPic from '../../img/kirby.jpg';
 import graph from '../../img/graph.png';
 import chart from '../../img/pie-chart.png';
 import $ from 'jquery';
+import ListOfDogs from '../ListOfDogs';
+import QueryUser from '../QueryUser';
+import AddExercise from '../AddExercise';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,7 +48,7 @@ export default function MyDogs() {
     weight: '',
     image: '',
   });
-  const [addDog, { error, data }] = useMutation(ADD_DOG);
+  const [addDog] = useMutation(ADD_DOG);
 
   const handleDogChange = (event) => {
     event.preventDefault();
@@ -69,7 +71,6 @@ const handleAddDog = async (event) => {
       variables: { ...dogState },
     });
     console.log(data);
-    Auth.login(data.addDog.token);
   } catch (e) {
     console.error(e);
   }
@@ -92,11 +93,6 @@ const handleAddDog = async (event) => {
     $(".new-dog-info").addClass("hidden");
     $(".add-dog-btn").removeClass("hidden");
   }
-
-  let myDogs = ["Kirby", "Mr. Fluffy", "George"];
-  const listOfDogs = myDogs.map(name => {
-    return <button >{name}</button>;
-  })
 
   return (
     <div className="content-container">
@@ -123,9 +119,8 @@ const handleAddDog = async (event) => {
           <button onClick={cancel}>Cancel</button>
         </div>
       </div>
-      <div className="list-of-dogs">
-        {listOfDogs}
-      </div>
+      <ListOfDogs></ListOfDogs>
+      <QueryUser></QueryUser>
       <div className="dog-parent-container">
         <div className="dog-image-information">
           <div className="dog-image-container">
@@ -138,11 +133,6 @@ const handleAddDog = async (event) => {
             <p><b>Weight:</b> 15 lbs</p>
           </div>
         </div>
-        {/* <div className="parents">
-          <p><b>Parents:</b></p>
-          <p>Ryan Scherr</p>
-          <p>Katie Kaminski</p>
-        </div> */}
       </div>
       <hr></hr>
       <div className="exercise-information">
@@ -154,28 +144,7 @@ const handleAddDog = async (event) => {
         </div>
       </div>
       <hr></hr>
-      <div className="add-exercise">
-        <h2>Add Exercise</h2>
-        <div className="exercise-options">
-          <div className="words">
-            <h3>Type of Exercise:</h3>
-            <h3>Duration:</h3>
-            <h3>Distance:</h3>
-          </div>
-          <div className="options">
-            <select>
-              <option value="actual value 1">Select</option>
-              <option value="actual value 2">Walk</option>
-              <option value="actual value 3">Play</option>
-            </select>
-            <input type="text" name="fname"></input>
-            <input type="text" name="fname"></input>
-          </div>
-        </div>
-        <div className="exercise-btn-container">
-          <button>Add Exercise</button>
-        </div>
-      </div>
+      <AddExercise></AddExercise>
     </div>
   );
 }

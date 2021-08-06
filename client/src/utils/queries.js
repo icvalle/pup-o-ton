@@ -29,7 +29,7 @@ export const QUERY_USERDOG = gql`
 
 export const QUERY_DOG = gql`
   query getDog {
-    dog {
+    dogs {
       _id
       name
       age
