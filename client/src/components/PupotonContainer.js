@@ -8,6 +8,7 @@ import Header from './Header';
 import HomePage from './HomePage';
 import "../index.css";
 import "../script.js";
+import { ApolloConsumer } from '@apollo/client';
 
 export default function PortfolioContainer() {
   
@@ -45,12 +46,14 @@ export default function PortfolioContainer() {
 
   return (
     <div>
+      <ApolloConsumer>
       <Header />
       {/* We are passing the currentPage from state and the function to update it */}
       {landingPage}
       {/* Here we are calling the renderPage method which will return a component  */}
       {pageRender}
       <Footer />
+      </ApolloConsumer>
     </div>
   );
 }

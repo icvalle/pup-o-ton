@@ -55,14 +55,8 @@ const resolvers = {
             return { token, user };
         },
         addDog: async (parent, {name, age, breed, weight}, context) => {
-            const dog = await Dog.create({name, breed, age, breed, weight});
-            const possibleUserDog = UserDog.findOne({userId: context.user_id});
-            if(possibleUserDog){
-                possibleUserDog.update({$push: {dogs: dog}})
-                return { dog, possibleUserDog}
-            }
-            const userDog = UserDog.create({userId: context.user._id, dogs: [dog]});
-            return {dog, userDog};
+            const dog = await Dog.create({name, age, breed, weight});
+            return dog;
             
         },
         // addExercise: async (parent, {day, type,  duration}) => {
