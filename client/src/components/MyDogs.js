@@ -1,43 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useQuery } from 'react';
 import { useMutation } from '@apollo/client';
-import {
-  ApolloClient,
-  InMemoryCache,
-  createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { ADD_DOG } from '../../utils/mutations';
-import kirbyPic from '../../img/kirby.jpg';
-import graph from '../../img/graph.png';
-import chart from '../../img/pie-chart.png';
+import { ADD_DOG } from '../utils/mutations';
+import kirbyPic from '../img/kirby.jpg';
+import graph from '../img/graph.png';
+import chart from '../img/pie-chart.png';
 import $ from 'jquery';
-import ListOfDogs from '../ListOfDogs';
-import QueryUser from '../QueryUser';
-import AddExercise from '../AddExercise';
-
-
-const httpLink = createHttpLink({
-  uri: '/graphql',
-});
-
-// Construct request middleware that will attach the JWT token to every request as an `authorization` header
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
-const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
+import ListOfDogs from './ListOfDogs';
+import AddExercise from './AddExercise';
+import { QUERY_ME } from '../utils/queries';
 
 export default function MyDogs() {
 
@@ -59,7 +29,6 @@ export default function MyDogs() {
       [name]: value,
     });
   };
-
 
 const handleAddDog = async (event) => {
   console.log("First test!");
@@ -120,7 +89,6 @@ const handleAddDog = async (event) => {
         </div>
       </div>
       <ListOfDogs></ListOfDogs>
-      <QueryUser></QueryUser>
       <div className="dog-parent-container">
         <div className="dog-image-information">
           <div className="dog-image-container">

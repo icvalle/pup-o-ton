@@ -8,8 +8,8 @@ const resolvers = {
         users: async () => {
             return User.find();
         },
-        user: async (parent, { username }) => {
-            return User.findOne({ username });
+        user: async (parent, { email }) => {
+            return User.findOne({ email });
         },
         userDog: async (parent, { userId }) => {
             return User.find({ userId }).populate('dogs');
@@ -25,10 +25,11 @@ const resolvers = {
         },
         me: async (parent, args, context) => {
             if (context.user) {
-                return User.findOne({ _id: context.user._id });
+                console.log('testwww')
+              return User.findOne({ _id: context.user._id });
             }
             throw new AuthenticationError('You need to be logged in!');
-        },
+          },
     },
 
     Mutation: {
@@ -55,20 +56,10 @@ const resolvers = {
             return { token, user };
         },
         addDog: async (parent, {name, age, breed, weight}, context) => {
-            const dog = await Dog.create({name, breed, age, breed, weight});
-            const possibleUserDog = UserDog.findOne({userId: context.user_id});
-            if(possibleUserDog){
-                possibleUserDog.update({$push: {dogs: dog}})
-                return { dog, possibleUserDog}
-            }
-            const userDog = UserDog.create({userId: context.user._id, dogs: [dog]});
-            return {dog, userDog};
-            
+            const user = context.user._id;
+            const dog = await Dog.create({name, age, breed, weight, user });
+            return dog;
         },
-        // addExercise: async (parent, {day, type,  duration}) => {
-        //     const exercise = await Exercise.create({day, type, duration});
-        //      return exercise;
-        // },
     },
 };
 

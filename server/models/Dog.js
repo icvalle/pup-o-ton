@@ -15,9 +15,9 @@ const dogSchema = new Schema({
   weight: {
     type: String,
   },
-  image: {
-    type: String   // stores the path to the image.
-  },
+  owner: {
+    type: Schema.Types.ObjectId,
+  }
 });
 
 const Dog = model('Dog', dogSchema);
