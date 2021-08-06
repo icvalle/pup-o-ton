@@ -26,7 +26,7 @@ export const ADD_USER = gql`
 
 export const ADD_DOG = gql`
   mutation addDog($name: String!, $age: String, $breed: String, $weight: String) {
-    addDog(name: $name, age: $age, breed: $breed, weight: $weight, owner: $) {
+    addDog(name: $name, age: $age, breed: $breed, weight: $weight) {
       _id
       name
       age
