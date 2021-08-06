@@ -46,6 +46,9 @@ const handleAddDog = async (event) => {
 
   $(".new-dog-info").addClass("hidden");
   $(".add-dog-btn").removeClass("hidden");
+
+  window.location.reload();
+
 };
 
   function showDogInfo() {
