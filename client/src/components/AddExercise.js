@@ -28,6 +28,7 @@ const AddExercise = () => {
         variables: { ...exerciseState },
       });
       console.log(data);
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }

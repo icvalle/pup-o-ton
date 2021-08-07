@@ -187,6 +187,7 @@ h1, h2, h3, h4, h5, h6 {
 .list-of-dogs {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .dog-info {
@@ -194,28 +195,21 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
-/* .dogButton {
-    position: fixed;
-    top: 500px;
-} */
-
-/* .doggy {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-} */
-
-/* .dog-btns {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-} */
-
 .list-of-dogs button {
     display: flex;
     justify-content: center;
     margin: 10px;
+}
+
+.dogButton {
+    border: 3px solid var(--off-white);
+}
+
+.dog-active {
+    background-color: var(--off-white);
+    color: var(--dark-green);
+    border: 3px solid var(--dark-green);
+    font-weight: bold;
 }
 
 .doggoo {
