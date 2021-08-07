@@ -71,7 +71,7 @@ export const ADD_DOGEXERCISE = gql`
 `;
 
 export const ADD_EXERCISE = gql`
-  mutation addExercise($duration: Int!, $dog: ID) {
+  mutation addExercise($duration: String!, $dog: String) {
     addExercise(duration: $duration, dog: $dog) {
       _id
       duration

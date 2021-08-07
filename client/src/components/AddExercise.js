@@ -5,7 +5,8 @@ import { useMutation } from '@apollo/client';
 const AddExercise = () => {
 
   const [exerciseState, setExerciseState] = useState({
-    duration: ''
+    duration: '',
+    dog: ''
   });
   const [addExercise, { error }] = useMutation(ADD_EXERCISE);
 
@@ -22,6 +23,11 @@ const AddExercise = () => {
   const handleAddExercise = async (event) => {
     event.preventDefault();
     console.log(exerciseState);
+
+    setExerciseState({
+      ...exerciseState,
+      dog: localStorage.getItem('dogId')
+    })
 
     try {
       const { data } = await addExercise({

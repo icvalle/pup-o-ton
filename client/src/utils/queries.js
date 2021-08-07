@@ -58,14 +58,11 @@ export const QUERY_DOGEXERCISE = gql`
 `;
 
 export const QUERY_EXERCISE = gql`
-  query getExercise {
-    exercise {
+  query exercises {
+    exercises {
       _id
-      day
-      type
-      name
       duration
-      sets
+      dog
     }
   }
 `;

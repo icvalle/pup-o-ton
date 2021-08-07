@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 
 const exerciseSchema = new Schema({
     duration: {
-        type: Number,
+        type: String,
         required: "Enter an amount"
     },
     dog: {
-        type: Schema.Types.ObjectId,
+        type: String,
     }
 });
 
