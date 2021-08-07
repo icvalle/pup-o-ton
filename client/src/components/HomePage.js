@@ -85,7 +85,7 @@ const HomePage = () => {
   return (
     <div className="content-container">
       <div className="homepage-description">
-        <p>Welcome! At Pup-o-Ton Dog Fitness Tracker, you can keep track of your dogs' exercise, find dog parks, stores, and vets nearby, and meet fellow dog-lovers in your area.</p>
+        <p className="title">At Pup-o-Ton Dog Fitness Tracker, you can help to keep your dogs healthy and active throughout the week by keeping track of their exercises.</p>
         <p className="title">Sign up or login below to get started!</p>
       </div>
       <div className="login-signup-container">

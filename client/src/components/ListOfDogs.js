@@ -13,7 +13,9 @@ const ListOfDogs = () => {
   $(document).ready(function () {
     $(".dogButton").click(function () {
       $(".doggy").addClass("hidden");
+      $(".dogButton").removeClass("dog-active");
       let name = $(this).data("name");
+      $(this).addClass("dog-active");
       let nameAgain = document.getElementById(name);
       $(nameAgain).removeClass("hidden");
     })
@@ -55,6 +57,7 @@ const ListOfDogs = () => {
         <img src={chart} alt=""></img>
       </div>
     </div>
+    <hr></hr>
     <AddExercise></AddExercise>
   </div>
   })

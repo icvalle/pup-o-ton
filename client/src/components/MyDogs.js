@@ -118,7 +118,6 @@ const handleAddDog = async (event) => {
           <img src={chart} alt=""></img>
         </div>
       </div> */}
-      <hr></hr>
     </div>
   );
 }
