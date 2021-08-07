@@ -8,6 +8,7 @@ import Graph from './Graph';
 import { useQuery } from '@apollo/client';
 import { Line } from 'react-chartjs-2';
 import { QUERY_EXERCISE } from '../utils/queries'
+import AddExercise from './AddExercise';
 
 const ListOfDogs = () => {
 
@@ -18,7 +19,7 @@ const ListOfDogs = () => {
       let name = $(this).data("name");
       let nameAgain = document.getElementById(name);
       $(nameAgain).removeClass("hidden");
-      const anotherDog = $(this).data('id')
+      const anotherDog = $(this).data('id');
       localStorage.setItem('dogId', anotherDog);
     })
   })
@@ -30,70 +31,61 @@ const ListOfDogs = () => {
       variables: {dog: dogId}
     });
     const exercises = data?.exercises;
-    // const exerciseArray = []
-    // exercises.forEach(element => {
-    //     exerciseArray.push(element.duration)
-    // });
+    const exerciseArray = []
+    exercises.forEach(element => {
+        exerciseArray.push(element.duration)
+    });
     console.log(exercises)
     //return {data};
 }
-
-  QueryExercise()
 
   const { data } = useQuery(QUERY_DOG);
   const dogs = data?.dogs || [];
 
   const listOfDogs = dogs.map(dog => {
-    return <div key={dog._id}>
-      <button data-name={dog.name} data-id={dog._id} className="dogButton">{dog.name}</button>
-      <div className="hidden doggy" id={dog.name}>
-        <div className="dog-parent-container">
-          <div className="dog-image-information">
-            <div className="dog-image-container">
-              <img src={kirbyPic} alt="" className="dog-image"></img>
-            </div>
-            <div className="dog-information-container">
-              <p><b>Name:</b>{dog.name}</p>
-              <p><b>Age:</b>{dog.age}</p>
-              <p><b>Breed:</b>{dog.breed}</p>
-              <p><b>Weight:</b>{dog.weight}</p>
-            </div>
-          </div>
-        </div>
-        <hr></hr>
-        <div id="dog-id" data-id={dog._id} className="hidden"></div>
+    return <div key={dog._id} className="doggoo">
+      <div className="dog-btns">
+        <button data-id={dog._id} data-name={dog.name} className="dogButton">{dog.name}</button>
       </div>
-    </div>;
+    </div>
+  })
+
+  const dogInfo = dogs.map(dog => {
+    return <div className="hidden doggy" id={dog.name}>
+    <div className="dog-parent-container">
+      <div className="dog-image-information">
+        <div className="dog-image-container">
+          <img src={kirbyPic} alt="" className="dog-image"></img>
+        </div>
+        <div className="dog-information-container">
+          <p><b>Name:</b> {dog.name}</p>
+          <p><b>Age:</b> {dog.age}</p>
+          <p><b>Breed:</b> {dog.breed}</p>
+          <p><b>Weight:</b> {dog.weight}</p>
+        </div>
+      </div>
+    </div>
+    <hr></hr>
+    <div id="dog-id" className="hidden">{dog._id}</div>
+    <div className="exercise-information">
+      <div className="graph-container">
+        <img src={graph} alt=""></img>
+      </div>
+      <div className="chart-container">
+        <img src={chart} alt=""></img>
+      </div>
+    </div>
+    <AddExercise></AddExercise>
+  </div>
   })
 
   return (
-    <div className="list-of-dogs">
-      {listOfDogs}
-      <div className="exercise-information">
-        <div className="graph-container">
-          <Line data={{
-            labels: ['1', '2', '3', '4', '5', '6'],
-            datasets: [
-              {
-                label: 'Time Spent Exercising',
-                data: [1, 2, 3, 4, 5],
-                fill: false,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgba(255, 99, 132, 0.2)',
-              },
-            ],
-          }} options={{
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    beginAtZero: true,
-                  },
-                },
-              ],
-            },
-          }} />
-        </div>
+    <div className="all-dog-stuff">
+      <div className="list-of-dogs">
+        {listOfDogs}
+      </div>
+      <div className="dog-info">
+        {dogInfo}
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import HomePage from './HomePage';
 import "../index.css";
 import Auth from '../utils/auth';
 
-export default function PortfolioContainer() {
+export default function PupotonContainer() {
 
   let landingPage = "";
 

@@ -38,6 +38,7 @@ hr {
 
 img {
     width: 100%;
+    border-radius: 10px;
 }
 
 select, input {
@@ -188,16 +189,45 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
+.dog-info {
+    display: flex;
+    justify-content: center;
+}
+
+/* .dogButton {
+    position: fixed;
+    top: 500px;
+} */
+
+/* .doggy {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+} */
+
+/* .dog-btns {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+} */
+
 .list-of-dogs button {
     display: flex;
     justify-content: center;
     margin: 10px;
 }
 
+.doggoo {
+    display: flex;
+    flex-direction: column;
+}
+
 .dog-parent-container {
     display: flex;
     justify-content: center;
     margin: 30px 0;
+    width: 100%;
 }
 
 .dog-parent-container p {
@@ -219,6 +249,10 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 200px;
     min-width: 50px;
     margin-right: 10px;
+    border: 5px solid var(--dark-green);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .dog-information-container {
@@ -228,7 +262,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dog-image {
-    border: 5px solid var(--dark-green);
+    border-radius: 10px;
+    margin: 0;
+    padding: 5px;
 }
 
 .exercise-information {
