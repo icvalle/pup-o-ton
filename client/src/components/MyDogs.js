@@ -1,6 +1,6 @@
 import React, { useState, useQuery } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_DOG } from '../utils/mutations';
+import { ADD_DOG, ADD_EXERCISE } from '../utils/mutations';
 import kirbyPic from '../img/kirby.jpg';
 import graph from '../img/graph.png';
 import chart from '../img/pie-chart.png';
@@ -9,6 +9,7 @@ import ListOfDogs from './ListOfDogs';
 import AddExercise from './AddExercise';
 import { QUERY_ME } from '../utils/queries';
 import DogProfile from './DogProfile';
+import Graph from './Graph';
 
 export default function MyDogs() {
 
@@ -17,7 +18,6 @@ export default function MyDogs() {
     age: '',
     breed: '',
     weight: '',
-    image: '',
   });
   const [addDog] = useMutation(ADD_DOG);
 
@@ -47,9 +47,6 @@ const handleAddDog = async (event) => {
 
   $(".new-dog-info").addClass("hidden");
   $(".add-dog-btn").removeClass("hidden");
-
-  window.location.reload();
-
 };
 
   function showDogInfo() {
@@ -97,10 +94,7 @@ const handleAddDog = async (event) => {
       <hr></hr>
       <div className="exercise-information">
         <div className="graph-container">
-          <img src={graph} alt=""></img>
-        </div>
-        <div className="chart-container">
-          <img src={chart} alt=""></img>
+          <Graph />
         </div>
       </div>
       <hr></hr>

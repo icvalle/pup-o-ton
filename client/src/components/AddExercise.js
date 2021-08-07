@@ -5,7 +5,8 @@ import { useMutation } from '@apollo/client';
 const AddExercise = () => {
 
   const [exerciseState, setExerciseState] = useState({
-    duration: ''
+    duration: '',
+    dog: ''
   });
   const [addExercise, { error }] = useMutation(ADD_EXERCISE);
 
