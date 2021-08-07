@@ -8,6 +8,7 @@ import $ from 'jquery';
 import ListOfDogs from './ListOfDogs';
 import AddExercise from './AddExercise';
 import { QUERY_ME } from '../utils/queries';
+import DogProfile from './DogProfile';
 
 export default function MyDogs() {
 

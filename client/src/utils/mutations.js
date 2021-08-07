@@ -71,14 +71,11 @@ export const ADD_DOGEXERCISE = gql`
 `;
 
 export const ADD_EXERCISE = gql`
-  mutation addExercise($day: Date, $type: String!, $name: String!, $duration: Int!, $sets: Int!) {
-    addExercise(day: $day, type: $type, name: $name, duration: $duration, sets: $sets) {
+  mutation addExercise($duration: Int!, $dog: ID) {
+    addExercise(duration: $duration, dog: $dog) {
       _id
-      day
-      type
-      name
       duration
-      sets
+      dog
     }
   }
 `;
