@@ -9,6 +9,7 @@ import ListOfDogs from './ListOfDogs';
 import AddExercise from './AddExercise';
 import { QUERY_ME } from '../utils/queries';
 import DogProfile from './DogProfile';
+import UploadForm from './UploadForm';
 
 export default function MyDogs() {
 
@@ -79,12 +80,14 @@ const handleAddDog = async (event) => {
             <h3>Age:</h3>
             <h3>Breed:</h3>
             <h3>Weight:</h3>
+            <h3>Upload Photo</h3>
           </div>
           <div className="answers">
             <input type="text" name="name" id="dogName" defaultValue={dogState.name} onChange={handleDogChange}></input>
             <input type="text" name="age" id="dogAge" defaultValue={dogState.age} onChange={handleDogChange}></input>
             <input type="text" name="breed" id="dogBreed" defaultValue={dogState.breed} onChange={handleDogChange}></input>
             <input type="text" name="weight" id="dogWeight" defaultValue={dogState.weight} onChange={handleDogChange}></input>
+            <UploadForm />
           </div>
         </div>
         <div className="create-dog-btn">
