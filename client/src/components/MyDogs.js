@@ -1,4 +1,4 @@
-import React, { useState, useQuery } from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_DOG, ADD_EXERCISE } from '../utils/mutations';
 import kirbyPic from '../img/kirby.jpg';
@@ -10,6 +10,8 @@ import AddExercise from './AddExercise';
 import { QUERY_ME } from '../utils/queries';
 import DogProfile from './DogProfile';
 import Graph from './Graph';
+import { useQuery } from '@apollo/client';
+import { Line } from 'react-chartjs-2';
 
 export default function MyDogs() {
 
@@ -90,6 +92,7 @@ const handleAddDog = async (event) => {
         </div>
       </div>
       <ListOfDogs></ListOfDogs>
+
       {/* <div className="dog-parent-container">
         <div className="dog-image-information">
           <div className="dog-image-container">

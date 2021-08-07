@@ -24,6 +24,11 @@ const AddExercise = () => {
     event.preventDefault();
     console.log(exerciseState);
 
+    setExerciseState({
+      ...exerciseState,
+      dog: localStorage.getItem('dogId')
+    })
+
     try {
       const { data } = await addExercise({
         variables: { ...exerciseState },

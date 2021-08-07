@@ -8,7 +8,7 @@ const exerciseSchema = new Schema({
         required: "Enter an amount"
     },
     dog: {
-        type: Schema.Types.ObjectId,
+        type: String,
     }
 });
 
