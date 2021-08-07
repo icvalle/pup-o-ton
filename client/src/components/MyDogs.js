@@ -8,6 +8,7 @@ import $ from 'jquery';
 import ListOfDogs from './ListOfDogs';
 import AddExercise from './AddExercise';
 import { QUERY_ME } from '../utils/queries';
+import DogProfile from './DogProfile';
 
 export default function MyDogs() {
 
@@ -89,19 +90,7 @@ const handleAddDog = async (event) => {
         </div>
       </div>
       <ListOfDogs></ListOfDogs>
-      <div className="dog-parent-container">
-        <div className="dog-image-information">
-          <div className="dog-image-container">
-            <img src={kirbyPic} alt="" className="dog-image"></img>
-          </div>
-          <div className="dog-information-container">
-            <p><b>Name:</b> Kirby</p>
-            <p><b>Age:</b> 1y, 2m</p>
-            <p><b>Breed:</b> Terrier Chihuahua</p>
-            <p><b>Weight:</b> 15 lbs</p>
-          </div>
-        </div>
-      </div>
+      <DogProfile></DogProfile>
       <hr></hr>
       <div className="exercise-information">
         <div className="graph-container">

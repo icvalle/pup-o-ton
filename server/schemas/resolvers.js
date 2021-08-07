@@ -60,6 +60,10 @@ const resolvers = {
             const dog = await Dog.create({name, age, breed, weight, user });
             return dog;
         },
+        addExercise: async (parent, {duration, dog}) => {
+            const exercise = await Exercise.create({duration, dog});
+            return exercise;
+        }
     },
 };
 
