@@ -92,7 +92,7 @@ const handleAddDog = async (event) => {
         </div>
       </div>
       <ListOfDogs></ListOfDogs>
-      <div className="dog-parent-container">
+      {/* <div className="dog-parent-container">
         <div className="dog-image-information">
           <div className="dog-image-container">
             <img src={kirbyPic} alt="" className="dog-image"></img>
@@ -113,7 +113,7 @@ const handleAddDog = async (event) => {
         <div className="chart-container">
           <img src={chart} alt=""></img>
         </div>
-      </div>
+      </div> */}
       <hr></hr>
       <AddExercise></AddExercise>
     </div>
