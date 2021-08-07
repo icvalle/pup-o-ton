@@ -116,7 +116,6 @@ const handleAddDog = async (event) => {
         </div>
       </div> */}
       <hr></hr>
-      <AddExercise></AddExercise>
     </div>
   );
 }
