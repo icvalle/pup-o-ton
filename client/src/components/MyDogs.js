@@ -9,13 +9,10 @@ import ListOfDogs from './ListOfDogs';
 import AddExercise from './AddExercise';
 import { QUERY_ME } from '../utils/queries';
 import DogProfile from './DogProfile';
-<<<<<<< HEAD
 import Graph from './Graph';
 import { useQuery } from '@apollo/client';
 import { Line } from 'react-chartjs-2';
-=======
 import UploadForm from './UploadForm';
->>>>>>> 659ae32eeb5cb2c7ad77ea716df9fd017b2f6906
 
 export default function MyDogs() {
 
@@ -53,6 +50,8 @@ const handleAddDog = async (event) => {
 
   $(".new-dog-info").addClass("hidden");
   $(".add-dog-btn").removeClass("hidden");
+  window.location.reload();
+
 };
 
   function showDogInfo() {
