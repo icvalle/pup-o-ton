@@ -39,6 +39,7 @@ const ListOfDogs = () => {
           </div>
         </div>
         <hr></hr>
+        <div id="dog-id" className="hidden">{dog._id}</div>
         <div className="exercise-information">
           <div className="graph-container">
             <img src={graph} alt=""></img>
